@@ -19,9 +19,9 @@ import java.util.List;
  */
 public class QuestionDAO {
 
-    private int SIZE_PAGE = 20;
+    private final int SIZE_PAGE = 20;
 
-    public List<QuestionDTO> getListPagingAdmin(String searchName, String searchCategory, int min, int max, int page) throws SQLException {
+    public List<QuestionDTO> getListPagingAdmin(String searchName, String searchSubject, String status, int page) throws SQLException {
         List<QuestionDTO> listProduct = null;
         Connection conn = null;
         PreparedStatement ps = null;
@@ -30,29 +30,32 @@ public class QuestionDAO {
         try {
             conn = utils.MyUtils.getConn();
             if (conn != null) {
-                String sql = "SELECT TOP (1000) [questionID],[questionContent],[ans1],[ans2],[ans3],[ans4],[correctAns],[createDate],[subjectID],[status]\n"
-                        + "FROM [Assignment2_BachDuyHoang].[dbo].[tblQuestions]"
-                        + "WHERE productName like ? and price between ? and ?  and categoryID like ? \n"
-                        + "ORDER BY createDate\n"
+                String sql = "SELECT [questionID],[questionContent],[ans1],[ans2],[ans3],[ans4],[correctAns],[createDate],[subjectID],[status]\n"
+                        + "FROM [Assignment2_BachDuyHoang].[dbo].[tblQuestions]\n"
+                        + "WHERE subjectID like ? and questionContent like ? and [status] like ?\n"
+                        + "ORDER BY questionID\n"
                         + "OFFSET ? ROWS FETCH NEXT 20\n"
-                        + "ROWS ONLY";
+                        + "ROW ONLY";
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, "%" + searchName + "%");
-                ps.setInt(2, min);
-                ps.setInt(3, max);
-                ps.setString(4, "%" + searchCategory + "%");
-                ps.setInt(5, (page - 1) * SIZE_PAGE);
+                ps.setString(2, "%" + searchSubject + "%");
+                ps.setString(3, "%" + status + "%");
+                ps.setInt(4, (page - 1) * SIZE_PAGE);
+
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     if (listProduct == null) {
                         listProduct = new ArrayList<>();
                     }
-
+                    QuestionDTO question = new QuestionDTO(rs.getString("questionID"), rs.getString("questionContent"),
+                            rs.getString("ans1"), rs.getString("ans2"), rs.getString("ans3"), rs.getString("ans4"),
+                            rs.getString("correctAns"), rs.getString("subjectID"), rs.getDate("createDate"), rs.getBoolean("status"));
+                    listProduct.add(question);
                 }
-
             }
 
         } catch (Exception e) {
+            System.out.println(e.toString());
         } finally {
             if (rs != null) {
                 rs.close();
@@ -68,7 +71,7 @@ public class QuestionDAO {
         return listProduct;
     }
 
-    public int countPage(String searchName, String searchCategory, int min, int max) throws SQLException {
+    public int countPage(String searchName, String searchSubject, String status) throws SQLException {
         int countPage = 0;
         Connection conn = null;
         PreparedStatement ps = null;
@@ -76,14 +79,13 @@ public class QuestionDAO {
         try {
             conn = utils.MyUtils.getConn();
             if (conn != null) {
-                String sql = "SELECT COUNT([productID])\n"
-                        + "FROM [Assignment1_BachDuyHoang].[dbo].[tblProducts]\n"
-                        + "WHERE productName like ? and price between ? and ? and active = '1'  and quantity > 0 and categoryID like ?";
+                String sql = "SELECT COUNT([questionID])\n"
+                        + "FROM [Assignment2_BachDuyHoang].[dbo].[tblQuestions]\n"
+                        + "WHERE subjectID like ? and questionContent like ? and [status] like ?";
                 ps = conn.prepareStatement(sql);
                 ps.setString(1, "%" + searchName + "%");
-                ps.setInt(2, min);
-                ps.setInt(3, max);
-                ps.setString(4, "%" + searchCategory + "%");
+                ps.setString(2, "%" + searchSubject + "%");
+                ps.setString(3, "%" + status + "%");
                 rs = ps.executeQuery();
 
                 if (rs.next()) {
@@ -99,6 +101,7 @@ public class QuestionDAO {
             }
 
         } catch (Exception e) {
+            System.out.println(e.toString());
         } finally {
             if (rs != null) {
                 rs.close();
@@ -113,22 +116,22 @@ public class QuestionDAO {
 
         return countPage;
     }
-    
-    public List<QuestionDTO> getListQuestion() throws SQLException{
+
+    public List<QuestionDTO> getListQuestion() throws SQLException {
         List<QuestionDTO> list = null;
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        
+
         try {
             conn = utils.MyUtils.getConn();
             if (conn != null) {
                 String sql = "";
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
-                
+
             }
-            
+
         } catch (Exception e) {
             System.out.println(e);
         } finally {
@@ -142,7 +145,7 @@ public class QuestionDAO {
                 conn.close();
             }
         }
-        
+
         return list;
     }
 }

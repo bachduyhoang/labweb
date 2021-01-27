@@ -36,7 +36,12 @@ public class HomeAdminServlet extends HttpServlet {
         
         String url = ERROR;
         try {
+            String index = (String) request.getAttribute("index");
             
+            if(index == null){
+                
+                
+            }
         } catch (Exception e) {
             log("Error at Severlet :" + e.toString());
         } finally {

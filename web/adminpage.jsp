@@ -16,6 +16,11 @@
     <body>
         <c:set var="user" value="${sessionScope.USER}" ></c:set>
         <c:set var="userRequired" value="ad" ></c:set>
+        <c:set var="index" value="${requestScope.indexPage}" ></c:set>
+        <c:set var="txtSearchName" value="${requestScope.txtSearchName}"></c:set>
+        <c:set var="txtSearchSubject" value="${requestScope.txtSearchSubject}"></c:set>
+        <c:set var="txtSearchStatus" value="${requestScope.txtSearchStatus}"></c:set>
+        <c:set var="maxPage" value="${requestScope.maxPage}" ></c:set>
 
         <c:url var="ManageQuestion" value="adminpage.jsp"></c:url>
         <c:url var="CreateQuestion" value="createQuestion.jsp"></c:url>
@@ -24,7 +29,7 @@
         <c:url var="Logout" value=""></c:url>
 
         <c:if test="${user.role == userRequired}">
-            <h1>Admin Page</h1>
+            <h1>Administrator Page</h1>
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -52,19 +57,33 @@
                     </div>
                 </div>
             </nav>
-            <form class="d-flex" action="MainController">
+            <form class="d-flex" action="HomeAdmin">
                 <input class="form-control me-2" type="search" placeholder="Name" aria-label="Search" name="txtSearchName" value="${txtSearchName}">
-                <input class="form-control me-2" type="search" placeholder="$MIN" aria-label="Search" name="txtSearchMin" value="${txtSearchMin}">
-                <input class="form-control me-2" type="search" placeholder="$MAX" aria-label="Search" name="txtSearchMax" value="${txtSearchMax}" >
-                <input class="form-control me-2" type="search" placeholder="Category" aria-label="Search" name="txtSearchCategory" value="${txtSearchCategory}" >
-                <button class="btn btn-outline-success" type="submit" name="btnAction" value="SearchAdmin">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Subject" aria-label="Search" name="txtSearchSubject" value="${txtSearchSubject}" >
+                <select name="txtSearchStatus">
+                    
+                </select>
+                <button class="btn btn-outline-success" type="submit" name="btnAction" value="HomeAdmin">Search</button>
             </form>
+
+            <c:if test="${sessionScope.maxPage != 1}">
+                <c:forEach begin="1" end="${maxPage}" var="i">
+                    <c:url var="paging" value="HomeAdmin">
+                        <c:param name="btnAction" value="SearchAdmin"></c:param>
+                        <c:param name="index" value="${i}"></c:param>
+                        <c:param name="txtSearchName" value="${txtSearchName}"></c:param>
+                        <c:param name="txtSearchSubject" value="${txtSearchSubject}"></c:param>
+                        <c:param name="txtSearchStatus" value="${txtSearchStatus}"></c:param>
+                    </c:url>
+                    <a  href="${paging}">${i}</a>
+                </c:forEach>  
+            </c:if>
         </c:if>
-            
+
         <c:if test="${user.role != userRequired}" >
             You can't access. This is ADMIN page
         </c:if>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Admin
  */
 public class QuestionDTO {
+
     private String questionID;
     private String questionContent;
     private String ans1;
@@ -21,11 +22,12 @@ public class QuestionDTO {
     private String correctAns;
     private String subjectID;
     private Date createDate;
+    private boolean status;
 
     public QuestionDTO() {
     }
 
-    public QuestionDTO(String questionID, String questionContent, String ans1, String ans2, String ans3, String ans4, String correctAns, String subjectID, Date createDate) {
+    public QuestionDTO(String questionID, String questionContent, String ans1, String ans2, String ans3, String ans4, String correctAns, String subjectID, Date createDate, boolean status) {
         this.questionID = questionID;
         this.questionContent = questionContent;
         this.ans1 = ans1;
@@ -35,6 +37,15 @@ public class QuestionDTO {
         this.correctAns = correctAns;
         this.subjectID = subjectID;
         this.createDate = createDate;
+        this.status = status;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getQuestionID() {
