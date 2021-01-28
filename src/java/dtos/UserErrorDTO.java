@@ -5,11 +5,13 @@
  */
 package dtos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class UserErrorDTO {
+public class UserErrorDTO implements Serializable{
 
     private String userID;
     private String name;

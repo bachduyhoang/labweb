@@ -19,10 +19,8 @@
 
         <c:url var="ManageQuestion" value="adminpage.jsp"></c:url>
         <c:url var="CreateQuestion" value="createQuestion.jsp"></c:url>
-        <c:url var="UpdateQuestion" value="updateQuestion.jsp"></c:url>
         <c:url var="DeleteQuestion" value="deleteQuestion.jsp"></c:url>
-        <c:url var="Logout" value=""></c:url>
-
+        <c:url var="Logout" value="Logout"></c:url>
         <c:if test="${user.role == userRequired}">
             <h1>Admin Page</h1>
 
@@ -38,9 +36,6 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="${CreateQuestion}">Create Question</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${UpdateQuestion}">Update Question</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="${DeleteQuestion}">Delete Question</a>

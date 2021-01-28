@@ -5,11 +5,13 @@
  */
 package dtos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class SubjectDTO {
+public class SubjectDTO implements Serializable{
     private String subID;
     private String subName;
 

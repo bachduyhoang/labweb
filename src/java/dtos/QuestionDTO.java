@@ -5,13 +5,14 @@
  */
 package dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author Admin
  */
-public class QuestionDTO {
+public class QuestionDTO implements Serializable{
 
     private String questionID;
     private String questionContent;

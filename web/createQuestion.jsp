@@ -16,12 +16,20 @@
     <body>
         <c:set var="user" value="${sessionScope.USER}" ></c:set>
         <c:set var="userRequired" value="ad" ></c:set>
+        <c:set var="questionError" value="${requestScope.QUESTION_ERROR}" ></c:set>
+        <c:set var="listSubject" value="${sessionScope.listSubject}" ></c:set>
+        <c:set var="txtContent" value="${requestScope.txtContent}"></c:set>
+        <c:set var="txtAns1" value="${requestScope.txtAns1}"></c:set>
+        <c:set var="txtAns2" value="${requestScope.txtAns2}"></c:set>
+        <c:set var="txtAns3" value="${requestScope.txtAns3}"></c:set>
+        <c:set var="txtAns4" value="${requestScope.txtAns4}"></c:set>
+        <c:set var="txtSubject" value="${requestScope.txtSubject}"></c:set>
+        <c:set var="txtCorrectAns" value="${requestScope.txtCorrectAns}"></c:set>
 
         <c:url var="ManageQuestion" value="adminpage.jsp"></c:url>
         <c:url var="CreateQuestion" value="createQuestion.jsp"></c:url>
-        <c:url var="UpdateQuestion" value="updateQuestion.jsp"></c:url>
         <c:url var="DeleteQuestion" value="deleteQuestion.jsp"></c:url>
-        <c:url var="Logout" value=""></c:url>
+        <c:url var="Logout" value="Logout"></c:url>
 
         <c:if test="${user.role == userRequired}">
             <h1>Admin Page</h1>
@@ -40,9 +48,6 @@
                                 <a class="nav-link  active" href="${CreateQuestion}">Create Question</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="${UpdateQuestion}">Update Question</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="${DeleteQuestion}">Delete Question</a>
                             </li>
                             <li class="nav-item">
@@ -52,19 +57,109 @@
                     </div>
                 </div>
             </nav>
-            <form class="d-flex" action="MainController">
-                <input class="form-control me-2" type="search" placeholder="Name" aria-label="Search" name="txtSearchName" value="${txtSearchName}">
-                <input class="form-control me-2" type="search" placeholder="$MIN" aria-label="Search" name="txtSearchMin" value="${txtSearchMin}">
-                <input class="form-control me-2" type="search" placeholder="$MAX" aria-label="Search" name="txtSearchMax" value="${txtSearchMax}" >
-                <input class="form-control me-2" type="search" placeholder="Category" aria-label="Search" name="txtSearchCategory" value="${txtSearchCategory}" >
-                <button class="btn btn-outline-success" type="submit" name="btnAction" value="SearchAdmin">Search</button>
+            <form action="CreateQuestion">
+                <table border="1" class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Question</th>
+                            <th colspan="2">Correct Answer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Question</td>
+                            <td colspan="2"><input class="form-control form-control" type="text" name="txtContent" value="${txtContent}" /></td>
+                            <td>${questionError.content}</td>
+                        </tr>
+                        <tr>
+                            <td>Answer 1</td>
+                            <td><input class="form-control form-control" type="text" name="txtAns1"  value="${txtAns1}" /></td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${txtCorrectAns == null}">
+                                        <input type="radio" name="txtCorrectAns" value="1" checked/>
+                                    </c:when>
+                                    <c:when test="${txtCorrectAns == 1}">
+                                        <input type="radio" name="txtCorrectAns" value="1" checked/>
+                                    </c:when>
+                                    <c:when test="${txtCorrectAns != 1}">
+                                        <input type="radio" name="txtCorrectAns" value="1"/>
+                                    </c:when>
+                                </c:choose>
+                            </td>
+                            <td>${questionError.ans1}</td>
+                        </tr>
+                        <tr>
+                            <td>Answer 2</td>
+                            <td><input class="form-control form-control" type="text" name="txtAns2" value="${txtAns2}" /></td>
+                            <td> 
+                                <c:if test="${txtCorrectAns == 2}">
+                                    <input type="radio" name="txtCorrectAns" value="2" checked/>
+                                </c:if>
+                                <c:if test="${txtCorrectAns != 2}">
+                                    <input type="radio" name="txtCorrectAns" value="2"/>
+                                </c:if>
+                            </td>
+                            <td>${questionError.ans2}</td>
+                        </tr>
+                        <tr>
+                            <td>Answer 3</td>
+                            <td><input class="form-control form-control" type="text" name="txtAns3" value="${txtAns3}" /></td>
+                            <td>
+                                <c:if test="${txtCorrectAns == 3}">
+                                    <input type="radio" name="txtCorrectAns" value="3" checked/>
+                                </c:if>
+                                <c:if test="${txtCorrectAns != 3}">
+                                    <input type="radio" name="txtCorrectAns" value="3"/>
+                                </c:if>
+                            </td>
+                            <td>${questionError.ans3}</td>
+                        </tr>
+                        <tr>
+                            <td>Answer 4</td>
+                            <td><input class="form-control form-control" type="text" name="txtAns4" value="${txtAns4}" /></td>
+                            <td>
+                                <c:if test="${txtCorrectAns == 4}">
+                                    <input type="radio" name="txtCorrectAns" value="4" checked/>
+                                </c:if>
+                                <c:if test="${txtCorrectAns != 4}">
+                                    <input type="radio" name="txtCorrectAns" value="4"/>
+                                </c:if>
+                            </td>
+                            <td>${questionError.ans4}</td>
+                        </tr>
+
+                        <tr>
+                            <td> Choose Subject: </td>
+                            <td colspan="3"> 
+                                <select name="txtSubject">
+                                    <c:forEach var="subject" items="${listSubject}">
+                                        <c:if test="${subject.subID == txtSubject}">
+                                            <option selected="">${subject.subID}</option>
+                                        </c:if>
+                                        <c:if test="${subject.subID != txtSubject}">
+                                            <option >${subject.subID}</option>
+                                        </c:if>
+                                    </c:forEach>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">Click to create question</td>
+                            <td colspan="2" class="text-center"><input type="submit" name="btnAction" value="CreateQuestion"/></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
             </form>
         </c:if>
-            
+
         <c:if test="${user.role != userRequired}" >
             You can't access. This is ADMIN page
         </c:if>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     </body>
 </html>

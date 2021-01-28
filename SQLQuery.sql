@@ -67,9 +67,71 @@ values	('Question1', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321'
 		('Question3', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
 		('Question4', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
 		('Question5', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
-		('Question6', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1')
+		('Question6', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question7', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question8', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question9', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question10', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question11', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question12', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question13', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question14', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question15', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question16', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question17', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question18', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question19', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question20', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question21', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question22', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question23', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question24', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question25', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question26', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question27', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question28', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question29', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+		('Question30', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRJ321','1'),
+
+		('Question1', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question2', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question3', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question4', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question5', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question6', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question7', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question8', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question9', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question10', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question11', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question12', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question13', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question14', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question15', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question16', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question17', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question18', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question19', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question20', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question21', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question22', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question23', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question24', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question25', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question26', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question27', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question28', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question29', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+		('Question30', 'ans1', 'ans2', 'ans3', 'ans4','ans1', '2021/1/27','PRO192','1'),
+
+
+
 
 --check Login
 SELECT [userID],[fullName],[password],[status],[roleID]
 FROM [Assignment2_BachDuyHoang].[dbo].[tblUSers]
 WHERE userID = 'hoang' and [password] = '1' 
+
+SELECT COUNT([questionID])
+FROM [Assignment2_BachDuyHoang].[dbo].[tblQuestions]
+WHERE subjectID like '%%' and questionContent like '%%' and [status] like '%1%'

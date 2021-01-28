@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Admin
  */
-public class UserDTO implements Serializable{
+public class UserDTO implements Serializable {
     private String userID;
     private String name;
     private String password;
