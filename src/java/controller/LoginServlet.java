@@ -23,8 +23,8 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
 
     private static final String ERROR = "invalid.jsp";
-//    private static final String SUCCESS = "HomeAdminServlet";
-    private static final String SUCCESS = "adminpage.jsp";
+    private static final String SUCCESS = "HomeAdminServlet";
+//    private static final String SUCCESS = "adminpage.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

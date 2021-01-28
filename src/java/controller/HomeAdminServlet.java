@@ -5,12 +5,17 @@
  */
 package controller;
 
+import daos.QuestionDAO;
+import dtos.QuestionDTO;
+import dtos.SubjectDTO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,8 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "HomeAdminServlet", urlPatterns = {"/HomeAdminServlet"})
 public class HomeAdminServlet extends HttpServlet {
+
     private static final String ERROR = "invalid.html";
-    private static final String SUCCESS = "";
+    private static final String SUCCESS = "adminpage.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,21 +39,50 @@ public class HomeAdminServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String url = ERROR;
         try {
-            String index = (String) request.getAttribute("index");
-            
-            if(index == null){
-                
-                
+            QuestionDAO dao = new QuestionDAO();
+            HttpSession ss = request.getSession();
+            List<SubjectDTO> listSub = null;
+            List<QuestionDTO> listQues = null;
+            int maxPage = 1;
+
+            String index = (String) request.getParameter("index");
+            String txtSearchName = request.getParameter("txtSearchName");
+            String txtSearchSubject = request.getParameter("txtSearchSubject");
+            String txtSearchStatus = request.getParameter("txtSearchStatus");
+
+            if (txtSearchName == null) {
+                txtSearchName = "";
             }
+            if (txtSearchSubject == null) {
+                txtSearchSubject = "";
+            }
+            if (txtSearchStatus == null) {
+                txtSearchStatus = "";
+            }
+            if (index == null) {
+                index = "1";
+            }
+
+            listSub = dao.getListSubject();
+            listQues = dao.getListPagingAdmin(txtSearchName, txtSearchSubject, txtSearchStatus, Integer.parseInt(index));
+            maxPage = dao.countPage(txtSearchName, txtSearchSubject, txtSearchStatus);
+            
+            ss.setAttribute("listSubject", listSub);
+            ss.setAttribute("listQuestion", listQues);
+            request.setAttribute("maxPage", maxPage);
+            request.setAttribute("txtSearchName", txtSearchName);
+            request.setAttribute("txtSearchSubject", txtSearchSubject);
+            request.setAttribute("txtSearchStatus", txtSearchStatus);
+            url = SUCCESS;
         } catch (Exception e) {
             log("Error at Severlet :" + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
